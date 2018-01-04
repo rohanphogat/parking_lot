@@ -4,12 +4,14 @@ class Valet
         @parking_slots = []
     end
 
+    attr_accessor :parking_lot_size, :parking_slots
+
     def create_parking_lots(size)
-        puts "Created a parking lot with #{size} slots"
         @parking_lot_size = size
         size.times do |i|
             @parking_slots << ParkingSlot.new(i+1)
         end
+        puts "Created a parking lot with #{size} slots"
     end
 
     def create_car_and_park(reg_number, colour)
@@ -23,14 +25,14 @@ class Valet
             puts 'Sorry, parking lot is full'
             return
         end
-        puts "Allocated slot number: #{slot.slot_number}"
         slot.car = car
         car.parking_slot = slot
+        puts "Allocated slot number: #{slot.slot_number}"
     end
 
     def vacate_parking_slot(slot_num)
-        puts "Slot number #{slot_num} is free"
         @parking_slots[slot_num-1] = ParkingSlot.new(slot_num)
+        puts "Slot number #{slot_num} is free"
     end
 
     def nearest_vacant_parking_slot
