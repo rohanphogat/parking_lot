@@ -1,4 +1,4 @@
-class SlotNumberForRegistrationNumber < ValetCommand
+class SlotNumberForRegistrationNumber < RootCommand
 
     def execute(args=[])
         reg_number = args[0]

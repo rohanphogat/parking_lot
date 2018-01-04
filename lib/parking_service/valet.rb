@@ -5,6 +5,7 @@ class Valet
     end
 
     def create_parking_lots(size)
+        puts "Created a parking lot with #{size} slots"
         @parking_lot_size = size
         size.times do |i|
             @parking_slots << ParkingSlot.new(i+1)
@@ -22,15 +23,17 @@ class Valet
             puts 'Sorry, parking lot is full'
             return
         end
+        puts "Allocated slot number: #{slot.slot_number}"
         slot.car = car
         car.parking_slot = slot
     end
 
     def vacate_parking_slot(slot_num)
-        @parking_slots[slot_num-1] = nil
+        puts "Slot number #{slot_num} is free"
+        @parking_slots[slot_num-1] = ParkingSlot.new(slot_num)
     end
 
-    def nearest_vacant_parking
+    def nearest_vacant_parking_slot
         @parking_slots.find{|slot| slot.car.nil?}
     end
 
@@ -44,10 +47,16 @@ class Valet
 
     def slot_number_for_registration_number(reg_number)
        slot = @parking_slots.find{|slot| slot.car.reg_number == reg_number}
-       puts slot.present? ? slot.slot_number : 'Not Found'
+       puts slot.nil? ?  'Not Found' : slot.slot_number
     end
 
     def status
+        puts "Slot No. Registration No Colour"
+        @parking_slots.each do |slot|
+            if !slot.car.nil?
+                puts "#{slot.slot_number} #{slot.car.reg_number} #{slot.car.colour}"
+            end
+        end
     end
 
 end

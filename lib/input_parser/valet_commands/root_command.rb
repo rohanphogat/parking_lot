@@ -1,4 +1,4 @@
-class ValetCommand
+class RootCommand
 
     def initialize(valet)
         @valet = valet

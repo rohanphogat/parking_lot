@@ -1,4 +1,4 @@
-class status < ValetCommand
+class Status < RootCommand
 
     def execute(args=[])
         @valet.status

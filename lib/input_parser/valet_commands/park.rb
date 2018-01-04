@@ -1,4 +1,4 @@
-class Park < ValetCommand
+class Park < RootCommand
 
     def execute(args=[])
         car_reg_number = args[0]
