@@ -1,4 +1,4 @@
-# parking_lot
+# Parking Lot
 
 ## Requirements
 
