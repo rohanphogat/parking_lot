@@ -1,4 +1,3 @@
-require 'byebug'
 Dir["./lib/input_parser/*.rb"].each {|file| require_relative file }
 Dir["./lib/input_parser/*/*.rb"].each {|file| require_relative file }
 Dir["./lib/parking_service/*.rb"].each {|file| require_relative file }
